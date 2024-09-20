@@ -127,7 +127,7 @@ class auth_plugin_authchained extends DokuWiki_Auth_Plugin {
                     * Use request attributes to guess whether we are in the Profile or UserManager
                     * and return the appropriate auth capabilities
                     */
-                    if ($ACT == "admin" && $_REQUEST['page']=="usermanager") {
+                    if ($ACT == "admin" && isset($_REQUEST['page']) && $_REQUEST['page']=="usermanager") {
                         return $this->usermanager_auth->canDo($cap);
                     } else {
                         // assume we want profile info.
