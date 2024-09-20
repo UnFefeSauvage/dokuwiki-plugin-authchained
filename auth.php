@@ -240,7 +240,7 @@ class auth_plugin_authchained extends DokuWiki_Auth_Plugin {
         //       echo "TESTSETEST";
 
         //print_r($this->chained_auth);
-        if ($ACT == "admin" && $_REQUEST['page']=="usermanager") {
+        if ($ACT == "admin" && isset($_REQUEST['page']) && $_REQUEST['page']=="usermanager") {
             if(!is_null($this->usermanager_auth))
                 return $this->usermanager_auth->getUserData($user);
 	}
@@ -421,7 +421,7 @@ class auth_plugin_authchained extends DokuWiki_Auth_Plugin {
     public function cleanUser($user) {
         global $ACT;
         //print_r($this->chained_auth);
-        if ($ACT == "admin" && $_REQUEST['page']=="usermanager") {
+        if ($ACT == "admin" && isset($_REQUEST['page']) && $_REQUEST['page']=="usermanager") {
             if(!is_null($this->usermanager_auth))
                 return $this->usermanager_auth->cleanUser($user);
         } else {
@@ -443,7 +443,7 @@ class auth_plugin_authchained extends DokuWiki_Auth_Plugin {
     */
     public function cleanGroup($group) {
         global $ACT;
-        if ($ACT == "admin" && $_REQUEST['page']=="usermanager") {
+        if ($ACT == "admin" && isset($_REQUEST['page']) && $_REQUEST['page']=="usermanager") {
             if(!is_null($this->usermanager_auth))
                 return $this->usermanager_auth->cleanGroup($group);
         } else {
